@@ -10,6 +10,9 @@ RUN npm run build
 # by just putting in a second "FROM" statement, we are starting a new block
 FROM nginx
 
+# Beanstalk
+EXPOSE 80
+
 # 1. Copy from builder step
 # 2. Copy to default nginx directory where content is being served from
 COPY --from=builder /app/build /usr/share/nginx/html
