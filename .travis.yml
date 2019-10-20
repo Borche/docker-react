@@ -7,3 +7,18 @@ before_install:
 
 script:
   - docker run -e CI=true borche/docker-react npm run test
+
+deploy:
+  # TravisCI supports a lot of different cloud providers - check if Google is supported?
+  provider: elasticbeanstalk
+  region: "eu-north-1"
+  app: "My First App"
+  environment: "MyFirstApp-env"
+  bucket_name: "elasticbeanstalk-eu-north-1-587177817664"
+  bucket_path: "My First App"
+  on:
+    branch: master
+  access_key_id: 
+    secure: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
